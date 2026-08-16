@@ -70,17 +70,13 @@ function openWindow(element) {
     handleWindowTap(element);
 }
 
-welcomeScreenOpen.addEventListener("click", function() {
+welcomeScreenOpen.addEventListener("click", function () {
     openWindow(welcomeScreen);
 });
 
-welcomeScreenClose.addEventListener("click", function() {
+welcomeScreenClose.addEventListener("click", function () {
     closeWindow(welcomeScreen);
 });
-
-const desctopShortcut = document.getElementById("desktopApps");
-
-dragWindow(desctopShortcut);
 
 let selectedIcon = undefined;
 
@@ -94,33 +90,34 @@ function deselectIcon(element) {
     selectedIcon = undefined;
 }
 
-function handleIconTap(element) {
-    if (element.classList.contains("selected")) {
-        deselectIcon(element);
-        openWindow(window);
-    } else {
-        selectIcon(element);
-    }
-}
-
 const owlPrintScreen = document.getElementById("owlprint");
 const owlPrintScreenOpen = document.getElementById("owlprintopen");
 const owlPrintScreenClose = document.getElementById("owlprintclose");
 
 dragWindow(owlPrintScreen);
+dragWindow(owlPrintScreenOpen);
 
-owlPrintScreenOpen.addEventListener("click", function() {
-    openWindow(owlPrintScreen);
-});
-
-owlPrintScreenClose.addEventListener("click", function() {
+owlPrintScreenClose.addEventListener("click", function () {
     closeWindow(owlPrintScreen);
 });
+
+owlPrintScreenOpen.addEventListener("click", function () {
+    handleIconTap(owlPrintScreenOpen, owlPrintScreen);
+});
+
+function handleIconTap(element, screen) {
+    if (element.classList.contains("selected")) {
+        deselectIcon(element);
+        openWindow(screen);
+    } else {
+        selectIcon(element);
+    }
+}
 
 let biggestIndex = 1;
 
 function addWindowTapHandling(element) {
-    element.addEventListener("mousedown", () => 
+    element.addEventListener("mousedown", () =>
         handleWindowTap(element)
     )
 }
@@ -133,3 +130,64 @@ function handleWindowTap(element) {
 
 addWindowTapHandling(owlPrintScreen);
 addWindowTapHandling(welcomeScreen);
+
+const kiraNotesScreen = document.getElementById("kiranotes");
+const kiraNotesScreenOpen = document.getElementById("kiranotesopen");
+const kiraNotesScreenClose = document.getElementById("kiranotesclose");
+
+dragWindow(kiraNotesScreen);
+dragWindow(kiraNotesScreenOpen);
+
+kiraNotesScreenOpen.addEventListener("click", function() {
+    handleIconTap(kiraNotesScreenOpen, kiraNotesScreen);
+});
+
+kiraNotesScreenClose.addEventListener("click", function() {
+    closeWindow(kiraNotesScreen);
+});
+
+addWindowTapHandling(kiraNotesScreen);
+
+const notes = [
+    {
+        title: "Welcome",
+        date: "8/16/2025",
+        content: "Welcome to Kira Notes!"
+    },
+    {
+        title: "Building KiraOS",
+        date: "8/16/2025",
+        content: "Today I worked on making my first KiraOS apps."
+    }
+]
+
+function showNote(index) {
+    const note = notes[index];
+    const noteContent = document.getElementById("notecontent");
+
+    noteContent.innerHTML = `
+        <h1>${note.title}</h1>
+        <p>${note.date}</p>
+        <p>${note.content}</p>
+    `;
+}
+
+function addNoteToList(index) {
+    const noteList = document.getElementById("noteslist");
+    const note = notes[index];
+    
+    const newNote = document.createElement("div");
+
+    newNote.innerHTML = `
+        <p>${note.title}</p>
+        <p>${note.date}</p>
+    `;
+
+    newNote.addEventListener("click", function() {
+        showNote(index);
+    });
+
+    noteList.appendChild(newNote);
+}
+
+notes.forEach((note, index) => addNoteToList(index));

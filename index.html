@@ -6,6 +6,7 @@
 </head>
 
 <body>
+
     <div class="top-bar" id="top">
         <div class="left-container" id="welcomeopen">
             <div class="os-logo">✦</div>
@@ -16,6 +17,7 @@
             <div id="dateElement">8/15/2026</div>
         </div>
     </div>
+
     <div class="window" id="welcome">
         <div class="window-header" id="welcomeheader">
             <div class="close-btn" id="welcomeclose"></div>
@@ -35,8 +37,11 @@
             <img src="./img/owl_print.webp">
             <p style="margin: 0px; color: #fff; ">Owl Print</p>
         </div>
+        <div id="kiranotesopen">
+            <img src="./img/kira-notes.png">
+            <p style="margin: 0px; color: #fff; ">Kira Notes</p>
+        </div>
     </div>
-
 
     <div class="window" id="owlprint" style="display: none;">
         <div class="window-header" id="owlprintheader">
@@ -45,6 +50,21 @@
         </div>
         <div class="window-content">
             <img style="width: 100%" src="./img/owl_print.webp">
+        </div>
+    </div>
+
+    <div class="window" id="kiranotes" style="display: flex;">
+        <div class="window-header" id="kiranotesheader">
+            <div class="close-btn" id="kiranotesclose"></div>
+            <p>Kira Notes</p>
+        </div>
+        <div class="window-content notes-container">
+            <div class="notes-list" id="noteslist"></div>
+            <div class="note-content" id="notecontent">
+                <h1>Kira Notes</h1>
+                <p>A collection of my thoughts, ideas, projects, and devlogs.</p>
+                <p>Select a note to begin.</p>
+            </div>
         </div>
     </div>
 

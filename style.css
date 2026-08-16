@@ -129,6 +129,7 @@ h1 {
     padding: 16px;
     filter: drop-shadow(0 0 8px black);
     width: fit-content;
+    margin-top: 8px;
 }
 
 .desktop-shortcut img {
@@ -137,10 +138,28 @@ h1 {
     border-radius: 8px;
 }
 
+.selected {
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+}
+
 #desktopApps {
     padding: 16px 64px 0 0;
     position: fixed;
     top: 128px;
     left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
+.notes-container {
+    display: flex;
+}
+
+.notes-list {
+    width: 180px;
+}
+
+.note-content {
+    flex: 1;
+}
