@@ -1,3 +1,4 @@
+const topBarElement = document.getElementById("top");
 const timeElement = document.getElementById("timeElement");
 const dateElement = document.getElementById("dateElement");
 
@@ -66,6 +67,7 @@ function closeWindow(element) {
 
 function openWindow(element) {
     element.style.display = "flex";
+    handleWindowTap(element);
 }
 
 welcomeScreenOpen.addEventListener("click", function() {
@@ -75,3 +77,59 @@ welcomeScreenOpen.addEventListener("click", function() {
 welcomeScreenClose.addEventListener("click", function() {
     closeWindow(welcomeScreen);
 });
+
+const desctopShortcut = document.getElementById("desktopApps");
+
+dragWindow(desctopShortcut);
+
+let selectedIcon = undefined;
+
+function selectIcon(element) {
+    element.classList.add("selected");
+    selectedIcon = element;
+}
+
+function deselectIcon(element) {
+    element.classList.remove("selected");
+    selectedIcon = undefined;
+}
+
+function handleIconTap(element) {
+    if (element.classList.contains("selected")) {
+        deselectIcon(element);
+        openWindow(window);
+    } else {
+        selectIcon(element);
+    }
+}
+
+const owlPrintScreen = document.getElementById("owlprint");
+const owlPrintScreenOpen = document.getElementById("owlprintopen");
+const owlPrintScreenClose = document.getElementById("owlprintclose");
+
+dragWindow(owlPrintScreen);
+
+owlPrintScreenOpen.addEventListener("click", function() {
+    openWindow(owlPrintScreen);
+});
+
+owlPrintScreenClose.addEventListener("click", function() {
+    closeWindow(owlPrintScreen);
+});
+
+let biggestIndex = 1;
+
+function addWindowTapHandling(element) {
+    element.addEventListener("mousedown", () => 
+        handleWindowTap(element)
+    )
+}
+
+function handleWindowTap(element) {
+    biggestIndex++;
+    element.style.zIndex = biggestIndex;
+    topBarElement.style.zIndex = biggestIndex + 1;
+}
+
+addWindowTapHandling(owlPrintScreen);
+addWindowTapHandling(welcomeScreen);

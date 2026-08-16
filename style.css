@@ -123,3 +123,24 @@ h1 {
     width: 128px;
     height: 128px;
 }
+
+.desktop-shortcut {
+    text-align: center;
+    padding: 16px;
+    filter: drop-shadow(0 0 8px black);
+    width: fit-content;
+}
+
+.desktop-shortcut img {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+}
+
+#desktopApps {
+    padding: 16px 64px 0 0;
+    position: fixed;
+    top: 128px;
+    left: 16px;
+}
+
