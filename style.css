@@ -1,0 +1,38 @@
+body {
+    background-image: url('./img/background.jpg');
+    background-size: cover;
+    height: 100vh;
+    font-family: Helvetica, Noto Sans, sans-serif;
+}
+
+h1 {
+    margin: 4px;
+}
+
+.top-bar {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.25);
+    color: white;
+    justify-content: space-between;
+}
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    border: solid;
+    width: 256px;
+    border-radius: 16px;
+}
+
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 128px;
+    height: 128px;
+}
