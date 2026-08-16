@@ -14,9 +14,9 @@ updateTime();
 setInterval(updateTime, 1000);
 
 
-const welcomeElement = document.getElementById("welcome");
+const welcomeScreen = document.getElementById("welcome");
 
-function dragElement(element) {
+function dragWindow(element) {
     let initialX = 0;
     let initialY = 0;
     let currentX = 0;
@@ -55,4 +55,23 @@ function dragElement(element) {
     }
 }
 
-dragElement(welcomeElement);
+dragWindow(welcomeScreen);
+
+const welcomeScreenOpen = document.getElementById("welcomeopen");
+const welcomeScreenClose = document.getElementById("welcomeclose");
+
+function closeWindow(element) {
+    element.style.display = "none";
+}
+
+function openWindow(element) {
+    element.style.display = "flex";
+}
+
+welcomeScreenOpen.addEventListener("click", function() {
+    openWindow(welcomeScreen);
+});
+
+welcomeScreenClose.addEventListener("click", function() {
+    closeWindow(welcomeScreen);
+});
