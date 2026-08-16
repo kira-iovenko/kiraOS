@@ -10,13 +10,61 @@ h1 {
 }
 
 .top-bar {
-    position: absolute;
-    width: 100%;
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 64px);
     display: flex;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(16px);
+    background-color: rgba(20, 20, 20, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
     color: white;
     justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    z-index: 1000;
+    font-family: Helvetica, Noto Sans, sand-serif;
+}
+
+.left-container {
+    display: flex;
+    align-items: center;
+    ;
+    gap: 8px;
+}
+
+.right-container {
+    gap: 8px;
+}
+
+#timeElement {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#dateElement {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 3px;
+}
+
+.os-logo {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0, #7c5cff, #4da6ff);
+    border-radius: 8px;
+    ;
+}
+
+.os-name {
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .window {
@@ -25,8 +73,10 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 16px;
-    border: solid;
-    width: 256px;
+    background-color: rgba(255,255,255,0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
+    width: 400px;
     border-radius: 16px;
 }
 

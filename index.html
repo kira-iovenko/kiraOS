@@ -7,8 +7,14 @@
 
 <body>
     <div class="top-bar">
-        <p style="" margin-lef>KiraOS</p>
-        <p>8/15/2026 8:40PM</p>
+        <div class="left-container">
+            <div class="os-logo">✦</div>
+            <div class="os-name">KiraOS</div>
+        </div>
+        <div class="right-container">
+            <div id="timeElement">8:40PM</div>
+            <div id="dateElement">8/15/2026</div>
+        </div>
     </div>
     <div class="window">
         <img class="avatar" src="./img/avatar.png">
@@ -17,6 +23,20 @@
         <p>KiraOS is a feature-limited OS to answer the question of "who is Kira?"</p>
         <a href="https://www.instagram.com/">Instagram</a>
     </div>
+    <script>
+        const timeElement = document.getElementById("timeElement");
+        const dateElement = document.getElementById("dateElement");
+
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const date = now.toLocaleDateString([], { month: 'short', day: 'numeric', weekday: 'short' });
+            timeElement.textContent = time;
+            dateElement.textContent = date;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 
 </html>
