@@ -72,12 +72,33 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.window-header {
+    width: calc(100%-16px);
+    display: flex;
+    align-items: center;
+    cursor: move;
+    backdrop-filter: blur(16px);
+    background-color: rgba(20, 20, 20, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 16px;
+    border-radius: 16px 16px 0 0;
+}
+
+.window-content {
     padding: 16px;
     background-color: rgba(255,255,255,0.75);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.25);
-    width: 400px;
-    border-radius: 16px;
+    border-radius: 0 0 16px 16px;
+}
+
+.window-header p {
+    margin: 0;
+    font-weight: 600;
 }
 
 .avatar {
