@@ -41,6 +41,10 @@
             <img src="./img/kira-notes.png">
             <p style="margin: 0px; color: #fff; ">Kira Notes</p>
         </div>
+        <div id="kirapaintopen">
+            <img src="./img/kira-paint.png">
+            <p style="margin: 0px; color: #fff; ">Kira Paint</p>
+        </div>
     </div>
 
     <div class="window" id="owlprint" style="display: none;">
@@ -53,7 +57,7 @@
         </div>
     </div>
 
-    <div class="window" id="kiranotes" style="display: flex;">
+    <div class="window" id="kiranotes" style="display: none;">
         <div class="window-header" id="kiranotesheader">
             <div class="close-btn" id="kiranotesclose"></div>
             <p>Kira Notes</p>
@@ -66,6 +70,19 @@
                 <p>Select a note to begin.</p>
             </div>
         </div>
+    </div>
+
+    <div class="window" id="kirapaint" style="display: flex;">
+        <div class="window-header" id="kirapaintheader">
+            <div class="close-btn" id="kirapaintclose"></div>
+            <p>Kira Paint</p>
+        </div>
+        <div class="window-content">
+            <div class="paint-area">
+                <div class="pixel-grid" id="pixelgrid"></div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="./script.js"></script>

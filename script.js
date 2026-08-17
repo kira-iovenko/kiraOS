@@ -191,3 +191,51 @@ function addNoteToList(index) {
 }
 
 notes.forEach((note, index) => addNoteToList(index));
+
+
+const kiraPaintScreen = document.getElementById("kirapaint");
+const kiraPaintScreenOpen = document.getElementById("kirapaintopen");
+const kiraPaintScreenClose = document.getElementById("kirapaintclose");
+
+dragWindow(kiraPaintScreen);
+dragWindow(kiraPaintScreenOpen);
+
+kiraPaintScreenOpen.addEventListener("click", function() {
+    handleIconTap(kiraPaintScreenOpen, kiraPaintScreen);
+});
+
+kiraPaintScreenClose.addEventListener("click", function() {
+    closeWindow(kiraPaintScreen);
+});
+
+addWindowTapHandling(kiraPaintScreen);
+
+const pixelGrid = document.getElementById("pixelgrid");
+
+for(let i = 0; i < 100; i++) {
+    const pixel = document.createElement("div");
+
+    pixel.classList.add("pixel")
+
+    pixel.addEventListener("click", function() {
+        pixel.style.backgroundColor = "black";
+    });
+
+    pixel.addEventListener("mouseenter", function() {
+        if (isMouseDown) {
+            pixel.style.backgroundColor = "black";
+        }
+    });
+
+    pixelGrid.appendChild(pixel);
+}
+
+let isMouseDown = false;
+
+pixelGrid.addEventListener("mousedown", function() {
+    isMouseDown = true;
+});
+
+pixelGrid.addEventListener("mouseup", function() {
+    isMouseDown = false;
+});
