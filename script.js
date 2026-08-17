@@ -214,6 +214,7 @@ const colorPicker = document.getElementById("colorpicker");
 const eraserButton =  document.getElementById("eraserbutton");
 const clearButton =  document.getElementById("clearbutton");
 const downloadButton =  document.getElementById("downloadbutton");
+const demoButton =  document.getElementById("demobutton");
 const gridWidth =  document.getElementById("gridwidth");
 const gridHeight =  document.getElementById("gridheight");
 
@@ -316,3 +317,8 @@ downloadButton.addEventListener("click", function() {
     link.click();
 })
 
+demoButton.addEventListener("click", function() {
+    gridWidth.value = 32;
+    gridHeight.value = 32;
+    createGrid(32, 32, true);
+});
