@@ -210,6 +210,14 @@ kiraPaintScreenClose.addEventListener("click", function() {
 
 addWindowTapHandling(kiraPaintScreen);
 
+const colorPicker = document.getElementById("colorpicker");
+
+let selectedColor = "#000000"
+
+colorPicker.addEventListener("input", function() {
+    selectedColor = colorPicker.value;
+});
+
 const pixelGrid = document.getElementById("pixelgrid");
 
 for(let i = 0; i < 100; i++) {
@@ -218,12 +226,12 @@ for(let i = 0; i < 100; i++) {
     pixel.classList.add("pixel")
 
     pixel.addEventListener("click", function() {
-        pixel.style.backgroundColor = "black";
+        pixel.style.backgroundColor = selectedColor;
     });
 
     pixel.addEventListener("mouseenter", function() {
         if (isMouseDown) {
-            pixel.style.backgroundColor = "black";
+            pixel.style.backgroundColor = selectedColor;
         }
     });
 
