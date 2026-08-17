@@ -213,6 +213,8 @@ addWindowTapHandling(kiraPaintScreen);
 const colorPicker = document.getElementById("colorpicker");
 const eraserButton =  document.getElementById("eraserbutton");
 const clearButton =  document.getElementById("clearbutton");
+const gridWidth =  document.getElementById("gridwidth");
+const gridHeight =  document.getElementById("gridheight");
 
 let selectedColor = "#000000"
 
@@ -236,23 +238,44 @@ clearButton.addEventListener("click", function() {
 
 const pixelGrid = document.getElementById("pixelgrid");
 
-for(let i = 0; i < 100; i++) {
-    const pixel = document.createElement("div");
+function createGrid(width, height) {
+    pixelGrid.innerHTML = "";
+    const pixelSize = 500 / Math.max(width, height);
+    console.log(pixelSize);
 
-    pixel.classList.add("pixel")
+    for(let i = 0; i < width * height; i++) {
+        const pixel = document.createElement("div");
 
-    pixel.addEventListener("click", function() {
-        pixel.style.backgroundColor = eraserOn ? "white" : selectedColor;
-    });
+        pixel.classList.add("pixel")
+        pixel.style.width = pixelSize + "px"
+        pixel.style.height = pixelSize + "px"
 
-    pixel.addEventListener("mouseenter", function() {
-        if (isMouseDown) {
+
+        pixel.addEventListener("click", function() {
             pixel.style.backgroundColor = eraserOn ? "white" : selectedColor;
-        }
-    });
+        });
 
-    pixelGrid.appendChild(pixel);
-}
+        pixel.addEventListener("mouseenter", function() {
+            if (isMouseDown) {
+                pixel.style.backgroundColor = eraserOn ? "white" : selectedColor;
+            }
+        });
+
+        pixelGrid.appendChild(pixel);
+    }
+
+    pixelGrid.style.gridTemplateColumns = `repeat(${width}, ${pixelSize}px)`;
+};
+
+createGrid(Number(gridWidth.value), Number(gridHeight.value));
+
+gridWidth.addEventListener("change", function() {
+    createGrid(Number(gridWidth.value), Number(gridHeight.value));
+});
+
+gridHeight.addEventListener("change", function() {
+    createGrid(Number(gridWidth.value), Number(gridHeight.value));
+});
 
 let isMouseDown = false;
 
