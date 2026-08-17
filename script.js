@@ -213,6 +213,7 @@ addWindowTapHandling(kiraPaintScreen);
 const colorPicker = document.getElementById("colorpicker");
 const eraserButton =  document.getElementById("eraserbutton");
 const clearButton =  document.getElementById("clearbutton");
+const downloadButton =  document.getElementById("downloadbutton");
 const gridWidth =  document.getElementById("gridwidth");
 const gridHeight =  document.getElementById("gridheight");
 
@@ -238,7 +239,7 @@ clearButton.addEventListener("click", function() {
 
 const pixelGrid = document.getElementById("pixelgrid");
 
-function createGrid(width, height) {
+function createGrid(width, height, demo = false) {
     pixelGrid.innerHTML = "";
     const pixelSize = 500 / Math.max(width, height);
     console.log(pixelSize);
@@ -249,6 +250,9 @@ function createGrid(width, height) {
         pixel.classList.add("pixel")
         pixel.style.width = pixelSize + "px"
         pixel.style.height = pixelSize + "px"
+        if (demo) {
+            pixel.style.backgroundColor = demoImage[i];
+        }
 
 
         pixel.addEventListener("click", function() {
@@ -286,4 +290,29 @@ pixelGrid.addEventListener("mousedown", function() {
 pixelGrid.addEventListener("mouseup", function() {
     isMouseDown = false;
 });
+
+downloadButton.addEventListener("click", function() {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+
+    const width = Number(gridWidth.value);
+    const height = Number(gridHeight.value);
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach((pixel, index) => {
+        const x = index % width;
+        const y = Math.floor(index / width);
+        context.fillStyle = pixel.style.backgroundColor || "white";
+        context.fillRect(x, y, 1, 1);
+    });
+
+    const link = document.createElement("a");
+
+    link.download = "kira-paint.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+})
 

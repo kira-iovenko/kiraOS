@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div class="window" id="kirapaint" style="display: flex;">
+    <div class="window" id="kirapaint" style="display: none;">
         <div class="window-header" id="kirapaintheader">
             <div class="close-btn" id="kirapaintclose"></div>
             <p>Kira Paint</p>
@@ -86,14 +86,16 @@
                     <input type="number" id="gridwidth" value="10" min="1">
                     <span>x</span>
                     <input type="number" id="gridheight" value="10" min="1">
+                    <button id="downloadbutton">Download</button>
                 </div>
                 <div class="pixel-grid" id="pixelgrid"></div>
             </div>
-            <div style="flex: 1"></div>
+            
         </div>
     </div>
     </div>
 
+    <script src="./demoimage.js"></script>
     <script src="./script.js"></script>
 </body>
 
