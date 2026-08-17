@@ -211,11 +211,27 @@ kiraPaintScreenClose.addEventListener("click", function() {
 addWindowTapHandling(kiraPaintScreen);
 
 const colorPicker = document.getElementById("colorpicker");
+const eraserButton =  document.getElementById("eraserbutton");
+const clearButton =  document.getElementById("clearbutton");
 
 let selectedColor = "#000000"
 
 colorPicker.addEventListener("input", function() {
     selectedColor = colorPicker.value;
+    eraserOn = false;
+    eraserButton.disabled = false;
+});
+
+let eraserOn = false;
+
+eraserButton.addEventListener("click", function() {
+    eraserOn = true;
+    eraserButton.disabled = true;
+});
+
+clearButton.addEventListener("click", function() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach(pixel => pixel.style.backgroundColor = "white");
 });
 
 const pixelGrid = document.getElementById("pixelgrid");
@@ -226,12 +242,12 @@ for(let i = 0; i < 100; i++) {
     pixel.classList.add("pixel")
 
     pixel.addEventListener("click", function() {
-        pixel.style.backgroundColor = selectedColor;
+        pixel.style.backgroundColor = eraserOn ? "white" : selectedColor;
     });
 
     pixel.addEventListener("mouseenter", function() {
         if (isMouseDown) {
-            pixel.style.backgroundColor = selectedColor;
+            pixel.style.backgroundColor = eraserOn ? "white" : selectedColor;
         }
     });
 
@@ -247,3 +263,4 @@ pixelGrid.addEventListener("mousedown", function() {
 pixelGrid.addEventListener("mouseup", function() {
     isMouseDown = false;
 });
+
